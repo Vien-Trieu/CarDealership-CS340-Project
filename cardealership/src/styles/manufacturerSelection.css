@@ -1,0 +1,57 @@
+.Manufacturer-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple to blue gradient */
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.Manufacturer-selection-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.Manufacturer-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.dealership-item {
+    background-color: #ffffff;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.dealership-item:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.05);
+}
+
+.back-button {
+    background-color: #ff5c5c;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #e64545;
+    transform: scale(1.05);
+}

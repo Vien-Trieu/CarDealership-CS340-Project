@@ -1,0 +1,150 @@
+/* (Author: Tytrez Dixon; Written: 1/26/2025; Updated: 2/1/2025) This .css file contains all 
+of the sytling which appears on this web application. This file is imported
+by any .tsx file which displays content for the web application.*/
+
+/* This class contains the styling for the screen-background*/
+/* Full-screen container for centering */
+.screen-background {
+  background: linear-gradient(to bottom, #8e44ad, #ffffff); /* Purple to white gradient */
+  font-family: Arial, sans-serif; /* Clean, modern font */
+}
+
+/* This class contains the styling for a generic button on the web application.*/
+.button {
+  width: 50%;
+  padding: 3px; /* Space inside the button */
+  background-color: #610e85; /* Purple background */
+  color: white; /* White text for contrast */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 18px; /* Slightly larger text for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth hover effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* This class contains the styling for a generic button on the web application.
+This class specifically deals with the color of the button as a result 
+of it being hovered by the cursor.*/
+.button:hover {
+  background-color: #732d91; /* Darker purple on hover */
+}
+
+/* This class contains the styling for the "VehicleEntry" function.
+(Refer to the "VehicleList.tsx" file for more information).
+*/
+.vehicle-entry {
+  padding-top: 125px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: left;
+  gap: 10px;
+}
+
+/* This class contains the styling for the "SingleVehicleEntry" function.
+(Refer to the "VehicleSpecs.tsx" file for more information).
+*/
+.single-vehicle-entry {
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+/* This class contains the styling for the logout button.*/
+.logout {
+width: 10%;
+height: 7%;
+padding: 3px; 
+background-color: #610e85; /* Darker color than background for contrast */
+color: white; 
+border: none; 
+border-radius: 5px;
+font-size: 18px; 
+cursor: pointer;
+transition: background-color 0.3s;
+margin-left:1300px;
+
+/* Center the text inside the button.*/
+display: flex;
+justify-content: center;
+align-items: center;
+
+  /* Allow other buttons to be placed on the same row.*/
+  position: absolute;
+}
+
+
+/*This class contains the styling for the menu button*/
+.menu-button {
+cursor: pointer;
+position: absolute;
+}
+
+/* This class contains the styling for the search bar. */
+.search {
+display: flex;
+justify-content: center;
+}
+
+/* This class contains the styling for the "Return to Vehicle List" button. */
+.vehicle-list-return {
+cursor: pointer;
+justify-content: left;
+position: relative;
+
+width: 10%;
+  padding: 3px; 
+  background-color:#8e44ad; /* Purple background */
+  color: white; 
+  border: none; 
+  border-radius: 5px;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 100px;
+  margin-left: 300px;
+
+}
+
+/* This class contains the styling for the "Yes" button on the "View Details" 
+web page. */
+.yes-button {
+cursor: pointer;
+justify-content: center;
+position: absolute;
+
+width: 4%;
+  padding: 3px; 
+  background-color:#0c6008;
+  color: white; 
+  border: none; 
+  border-radius: 5px;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 40px; 
+  margin-left: 550px;
+}
+
+/* This class contains the styling for the "No" button on the "View Details" 
+web page. */
+.no-button {
+cursor: pointer;
+justify-content: center;
+position: relative;
+
+width: 4%;
+  padding: 3px; 
+  background-color:#8f0a0a;
+  color: white; 
+  border: none; 
+  border-radius: 5px;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 40px; 
+  margin-left: 750px;
+}

@@ -1,0 +1,73 @@
+/* OrderSelection.css */
+
+.order-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #800080, #ffffff); /* Purple to white gradient */
+    font-family: Arial, sans-serif;
+  }
+  
+  .order-selection-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .order-selection-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .order-selection-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .order-selection-button.manufacturer {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .order-selection-button.manufacturer:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .order-selection-button.dealership {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .order-selection-button.dealership:hover {
+    background-color: #1e7e34;
+    transform: scale(1.05);
+  }
+
+  .back-to-home {
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    padding:10px;
+    font-size: 16px;
+    font-weight:bold;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor:pointer;
+    transition: background-color 0.3s ease, transform 02s ease;
+  }
+  
+  .back-to-home:hover {
+    background-color: #b02a37;
+    transform: scale(1.05);
+  }

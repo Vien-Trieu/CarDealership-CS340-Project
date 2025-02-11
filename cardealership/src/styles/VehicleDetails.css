@@ -1,0 +1,76 @@
+.vehicle-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #0f0f0f, #1a1a1a); /* Dark background */
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+.vehicle-info {
+    display: block;
+    margin-top: 20px;
+}
+
+.vehicle-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.vehicle-image {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.vehicle-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.vehicle-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.back-button {
+    background-color: #ff5c5c;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: #e64545;
+    transform: scale(1.05);
+}
+
+.purchase-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.purchase-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
