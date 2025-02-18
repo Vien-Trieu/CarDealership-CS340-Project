@@ -95,6 +95,32 @@ app.get('/cars/:id', (req, res) => {
   });
 });
 
+app.post('/api/customers', authenticateToken, async (req, res) => {
+  try {
+    const { name, email, phone, address } = req.body;
+    
+    // Insert customer into the database
+    await executeQuery(
+      'INSERT INTO customers (name, email, phone, address, user_id) VALUES (?, ?, ?, ?, ?)',
+      [name, email, phone, address, req.user.id]
+    );
+    
+    res.status(201).json({ message: 'Customer information recorded successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/customers', authenticateToken, async (req, res) => {
+  try {
+    const customers = await executeQuery('SELECT * FROM customers WHERE user_id = ?', [req.user.id]);
+    res.json(customers);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
