@@ -2,10 +2,15 @@ import React from 'react';
 import '../styles/WebApp.css';
 import { useNavigate } from 'react-router-dom';
 import IonIcon from '@reacticons/ionicons';
+import { useState } from 'react';
 
-function VehicleList () {
+function VehicleList () { 
 
     const navigate = useNavigate();
+
+    const [menuVisible, setMenuVisible] = useState (false);
+
+    const handleClick = () => setMenuVisible(!menuVisible)
 
     const vehicleEntry = {
         vehicleImg: "https://www.carscoops.com/wp-content/uploads/webp/2022/12/2022-Jaguar-XE.webp",
@@ -13,6 +18,7 @@ function VehicleList () {
         year: '2022',
         price: '$56,000'
     }
+
 
     return (
         <div>
@@ -26,18 +32,49 @@ function VehicleList () {
             
             <div>
                 {/* Menu button */}
-                <button className = "menu-button">
+                <button>
                 <IonIcon 
                 name = "menu-outline"
                 size = "large"
-                // onClick={() => <p>{Jeff.Spe}</p>}
+                style = {{cursor: "pointer"}}
+                className = {menuVisible ? "menu-visible" : "menu-hidden"}
+                onClick={handleClick}
                 />
                 </button>
             </div>
 
+            <div className = {menuVisible ? "menu-visible" : "menu-hidden"}>
+                {/* Menu List */}
+                <aside className = "menu-visible menu-list-item :hover" >
+                    <br></br>
+                    <br></br>
+                    <p onClick={() => navigate('/updateCommissions')}
+                    style={{cursor: "pointer"}}>Update Commisions</p>
+                    <br></br>
+                    <p onClick={() => navigate('/calculateBonus')}
+                    style={{cursor: "pointer"}}>Calculate Bonus</p>
+                    <br></br>
+                    <p onClick={() => navigate('/addVehicle')}
+                    style={{cursor: "pointer"}}>Add Vehicle to Inventory</p>
+                    <br></br>
+                    <p onClick={() => navigate('/updateDiscounts')}
+                    style={{cursor: "pointer"}}>Update Discounts</p>
+                    <br></br>
+                    <p onClick={() => navigate('/approveTransactions')}
+                    style={{cursor: "pointer"}}>Approve Sales and Orders</p>
+                    <br></br>
+                    <p onClick={() => navigate('/home')}
+                    style={{cursor: "pointer"}}>Home</p>
+                    <br></br>
+                    <i
+                    onClick={handleClick}
+                    style={{cursor: "pointer" }}> Hide Menu</i>
+                </aside>
+            </div>
+
             {/* Search bar. */}
             <div className = "search">
-            <label style = {{padding: '15px'}}>Search</label>
+            <label style = {{padding: '10px'}}>Search</label>
             <input
                 type="text"
             />
