@@ -1,3 +1,15 @@
+/*----------------------------------------------------------------------
+Author: Tytrez Dixon 
+Date Written: 2/15/2025
+Date Updated: 2/23/2025
+
+This is the .tsx file for the "Update Commissions" webpage for 
+Mr.Tucker's Car Dealership. On this webpage, the owner will be able 
+to update the financial commissions of the salespeople based on their
+total sales.
+-----------------------------------------------------------------------*/
+
+// Import the necessary libraries and packages.
 import React from 'react';
 import '../styles/WebApp.css';
 import '../styles/updateCommissions.css';
@@ -5,14 +17,22 @@ import { useNavigate } from 'react-router-dom';
 import IonIcon from '@reacticons/ionicons';
 import { useState } from 'react';
 
-function UpdateCommissions() {
+// This function creates the front-end display of the webpage.
+function UpdateCommissions() { 
 
+    {/* Initialize the useNavigate method to enable the transition from one
+    page to another. */}
     const navigate = useNavigate();
 
+    {/* This useState declartion and handleClick() method allows
+        the user to click on the menu icon see the menu list and
+        click the "Hide Menu" item to hide the list */}
     const [menuVisible, setMenuVisible] = useState (false);
 
     const handleClick = () => setMenuVisible(!menuVisible)
 
+    /* This constructor enables the creation of a salesperson object
+    which has profile picture and a name.*/
     const salesperson = {
         profilePic: "https://www.feedingmatters.org/wp-content/uploads/2022/12/Generic-profile-pic.png",
         name: "Salesperson"
@@ -28,20 +48,30 @@ function UpdateCommissions() {
                 Logout
             </div>
 
-            {/* Menu button */}
             <div>
+                {/* Menu button */}
                 <button>
                 <IonIcon 
                 name = "menu-outline"
                 size = "large"
                 style = {{cursor: "pointer"}}
+
+                // The menu button will inheret the useState declaration */}
                 className = {menuVisible ? "menu-visible" : "menu-hidden"}
+
+                // Make the menu list appear when the menu button is clicked.
                 onClick={handleClick}
                 />
                 </button>
             </div>
 
+            {/* Webpage Title */}
+            <div className = "webpage-title">
+                <h1>Update Commissions</h1>
+            </div>
+
             {/* Menu List */}
+            {/* The menu list will inheret the useState declaration */}
             <div className = {menuVisible ? "menu-visible" : "menu-hidden"}>
                 <aside className = "menu-visible menu-list-item :hover" >
                     <br></br>
@@ -64,6 +94,8 @@ function UpdateCommissions() {
                     <p onClick={() => navigate('/home')}
                     style={{cursor: "pointer"}}>Home</p>
                     <br></br>
+
+                    {/* Hide the menu. */}
                     <i
                     onClick={handleClick}
                     style={{cursor: "pointer" }}> Hide Menu</i>
@@ -72,9 +104,11 @@ function UpdateCommissions() {
 
 
             {/* List of salespeople */}
+            {/* Display the list as a 2x4 table. */}
             <div style ={{display: 'flex', flexWrap: 'wrap', marginLeft: "150px"}}>
                 <div className = "salesperson">
 
+                    {/* Individual salesperon entry */}
                     <div style = {{marginLeft: "35px"}}>
                         <img src = {salesperson.profilePic}
                             width = {100}
@@ -231,4 +265,5 @@ function UpdateCommissions() {
     );
 }
 
+// Mandatory export default statement.
 export default UpdateCommissions;
