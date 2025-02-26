@@ -1,13 +1,30 @@
+/*---------------------------------------------------
+Author: Tytrez Dixon 
+Date Written: 2/15/2025
+Date Updated: 2/17/2025
+
+This is the .tsx file for the "Add Vehicle" web page for 
+Mr.Tucker's Car Dealership. On this web page, the user will be
+able to add Vehicles to the dealerships inventory.
+---------------------------------------------------*/
+
+{/* Import the necessary libraries and packages. */}
 import React from 'react';
 import '../styles/WebApp.css';
 import { useNavigate } from 'react-router-dom';
 import IonIcon from '@reacticons/ionicons';
 import { useState } from 'react';
 
+{/* This function creates the front-end display of the webpage */}
 function AddVehicle () {
 
+    {/* Initialize the useNavigate method to enable the transition from one
+        page to another. */}
     const navigate = useNavigate();
-
+    
+    {/* This useState declartion and handleClick() method allows
+        the user to click on the menu icon see the menu list and
+        click the "Hide Menu" item to hide the list */}
     const [menuVisible, setMenuVisible] = useState (false);
 
     const handleClick = () => setMenuVisible(!menuVisible)
@@ -30,12 +47,17 @@ function AddVehicle () {
                 name = "menu-outline"
                 size = "large"
                 style = {{cursor: "pointer"}}
+
+                // The menu button will inheret the useState declaration */}
                 className = {menuVisible ? "menu-visible" : "menu-hidden"}
+
+                // Make the menu list appear when the menu button is clicked.
                 onClick={handleClick}
                 />
                 </button>
             </div>
 
+            {/* The menu list will inheret the useState declaration */}
             <div className = {menuVisible ? "menu-visible" : "menu-hidden"}>
                 {/* Menu List */}
                 <aside className = "menu-visible menu-list-item :hover" >
@@ -59,6 +81,8 @@ function AddVehicle () {
                     <p onClick={() => navigate('/home')}
                     style={{cursor: "pointer"}}>Home</p>
                     <br></br>
+
+                    {/* Hide the menu */}
                     <i 
                     onClick={handleClick}
                     style={{cursor: "pointer" }}> Hide Menu</i>
@@ -68,4 +92,5 @@ function AddVehicle () {
     );
 }
 
+// Necessary export default statement.
 export default AddVehicle;
