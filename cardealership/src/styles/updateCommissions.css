@@ -1,26 +1,38 @@
-  .salesperson-of-the-year{
-    width: 20%;
-    height: 7%;
-    padding: 3px; 
-    bottom: 10px;
-    background-color: #610e85; /* Darker color than background for contrast */
-    color: white; 
-    border: none; 
-    border-radius: 5px;
-    font-size: 18px; 
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left:1150px;
-  
-    /* Center the text inside the button.*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    /* Allow other buttons to be placed on the same row.*/
-    position: absolute;
-    }
+/*----------------------------------------------------------------------
+Author: Tytrez Dixon and Vien Trieu
+Date Written: 2/15/2025
+Date Updated: _________
 
+This is the .css file which provides part of the styling for the 
+"Update Commissions" webpage for Mr.Tucker's Car Dealership. 
+-----------------------------------------------------------------------*/
+  
+/* This class provides the styling for the "Salesperson of the Year" button.*/
+.salesperson-of-the-year{
+  width: 20%;
+  height: 7%;
+  padding: 3px; 
+  bottom: 10px;
+  background-color: #610e85; /* Darker color than background for contrast */
+  color: white; 
+  border: none; 
+  border-radius: 5px;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left:1150px;
+
+  /* Center the text inside the button.*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Allow other buttons to be placed on the same row.*/
+  position: absolute;
+  }
+
+
+/* This class provides the styling for the "Salesperson of the Year" button.*/
 .salesperson {
   padding-top: 125px;
   display: flex;
