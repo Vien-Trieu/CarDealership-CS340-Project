@@ -8,7 +8,7 @@ Mr.Tucker's Car Dealership. On this web page, the user will be
 able to add Vehicles to the dealerships inventory.
 ---------------------------------------------------*/
 
-{/* Import the necessary libraries and packages. */}
+// Import the necessary libraries and packages.
 import React from 'react';
 import '../styles/WebApp.css';
 import { useNavigate } from 'react-router-dom';
