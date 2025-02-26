@@ -1,71 +1,130 @@
-import React from 'react';
-import '../styles/WebApp.css';
-import { useNavigate } from 'react-router-dom';
-import IonIcon from '@reacticons/ionicons';
-import { useState } from 'react';
+/*----------------------------------------------------------------------
+Author: Tytrez Dixon 
+Date Written: 2/23/2025
+Date Updated: _________
 
-function ApproveTransactions () {
+This is the .css file which provides part of the styling for the 
+"Approve Sales/Orders" webpage for Mr.Tucker's Car Dealership. 
+-----------------------------------------------------------------------*/
 
-    const navigate = useNavigate();
-
-    const [menuVisible, setMenuVisible] = useState (false);
-
-    const handleClick = () => setMenuVisible(!menuVisible)
-
-
-    return (
-        <div>
-            {/* Logout button */}
-            <div 
-            className = "logout"
-            style = {{marginTop: "10px"}}
-            onClick={() => navigate('/login')}>
-                Logout
-            </div>
-            
-            <div>
-                {/* Menu button */}
-                <button>
-                <IonIcon 
-                name = "menu-outline"
-                size = "large"
-                style = {{cursor: "pointer"}}
-                className = {menuVisible ? "menu-visible" : "menu-hidden"}
-                onClick={handleClick}
-                />
-                </button>
-            </div>
-
-            <div className = {menuVisible ? "menu-visible" : "menu-hidden"}>
-                {/* Menu List */}
-                <aside className = "menu-visible menu-list-item :hover" >
-                    <br></br>
-                    <br></br>
-                    <p onClick={() => navigate('/updateCommissions')}
-                    style={{cursor: "pointer"}}>Update Commissions</p>
-                    <br></br>
-                    <p onClick={() => navigate('/calculateBonus')}
-                    style={{cursor: "pointer"}}>Calculate Bonus</p>
-                    <br></br>
-                    <p onClick={() => navigate('/addVehicle')}
-                    style={{cursor: "pointer"}}>Add Vehicle to Inventory</p>
-                    <br></br>
-                    <p onClick={() => navigate('/updateDiscounts')}
-                    style={{cursor: "pointer"}}>Update Discounts</p>
-                    <br></br>
-                    <b>Approve Sales and Orders</b>
-                    <br></br>
-                    <br></br>
-                    <p onClick={() => navigate('/home')}
-                    style={{cursor: "pointer"}}>Home</p>
-                    <br></br>
-                    <i 
-                    onClick={handleClick}
-                    style={{cursor: "pointer" }}> Hide Menu</i>
-                </aside>
-            </div>
-        </div>
-    );
+/* This class provides the styling for the "Approve" button. */
+.approve {
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    content: "Approve ";
+  
+    width: 5%;
+      padding: 3px; 
+      background-color:#0c6008;
+      color: white; 
+      border: none; 
+      border-radius: 5px;
+      font-size: 18px; 
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: -150px; 
+      margin-left: 500px;
 }
 
-export default ApproveTransactions;
+/* This class provides the styling for the "Approved" button. */
+.approved {
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    content: "Approved";
+  
+    width: 4%;
+      padding: 3px; 
+      background-color:#0c6008;
+      color: white; 
+      border: none; 
+      border-radius: 5px;
+      font-size: 18px; 
+      cursor: not-allowed;
+      transition: background-color 0.3s;
+      margin-top: -150px; 
+      margin-left: 500px;
+}
+
+/* This class provides the styling for the "Approved" button when the 
+    "Reject" button is clicked. */
+.not-approved {
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    content: "Approve";
+  
+    width: 4%;
+      padding: 3px; 
+      background-color:grey;
+      color: black; 
+      border: none; 
+      border-radius: 5px;
+      font-size: 18px; 
+      cursor: not-allowed;
+      transition: background-color 0.3s;
+      margin-top: -150px; 
+      margin-left: 500px;
+}
+
+/* This class provides the styling for the "Reject" button.*/
+.reject {
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    content: "Reject";
+  
+    width: 4%;
+      padding: 3px; 
+      background-color: #8f0a0a;
+      color: white; 
+      border: none; 
+      border-radius: 5px;
+      font-size: 18px; 
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: -150px; 
+      margin-left: 600px;
+}
+
+/* This class provides the styling for the "Rejected" button.*/
+.rejected {
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    content: "Rejected";
+  
+    width: 4%;
+      padding: 3px; 
+      background-color:#8f0a0a;
+      color: white; 
+      border: none; 
+      border-radius: 5px;
+      font-size: 18px; 
+      cursor: not-allowed;
+      transition: background-color 0.3s;
+      margin-top: -150px; 
+      margin-left: 6000px;
+}
+
+/* This class provides the styling for the "Reject" button when the 
+"Approve" button is clicked.*/
+.not-rejected {
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    content: "Reject";
+  
+    width: 4%;
+      padding: 3px; 
+      background-color: grey;
+      color: black; 
+      border: none; 
+      border-radius: 5px;
+      font-size: 18px; 
+      cursor: not-allowed;
+      transition: background-color 0.3s;
+      margin-top: -150px; 
+      margin-left: 6000px;
+}
