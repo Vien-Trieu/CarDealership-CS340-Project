@@ -1,6 +1,11 @@
-/* (Author: Tytrez Dixon; Written: 1/26/2025; Updated: 2/1/2025) This .css file contains all 
-of the sytling which appears on this web application. This file is imported
-by any .tsx file which displays content for the web application.*/
+/*----------------------------------------------------------------------
+Author: Tytrez Dixon and Vien Trieu
+Date Written: 1/26/2025
+Date Updated: 2/15/2025
+
+This is the .css file which provides part of the styling for all of the
+pages for the Mr.Tucker Car Dealership web application.
+-----------------------------------------------------------------------*/
 
 /* This class contains the styling for the screen-background*/
 /* Full-screen container for centering */
@@ -152,6 +157,8 @@ web page. */
     margin-left: 750px;
 }
 
+/* This class provides the styling for the menu list when the menu button
+is clicked.*/
 .menu-visible {
   position: fixed;
   left: 0;
@@ -165,11 +172,19 @@ web page. */
   0.15s ease transform;
 }
 
+/* This class provides the styling fo the menu list when it is not visible.*/
 .menu-hidden {
   display: none;
 }
 
+/* This class provides the styling for the items in the menu list 
+when the user hovers over it.*/
 .menu-list-item :hover{
   text-decoration: underline;
   color: purple;
+}
+
+/* This class provides the styling for the title of a webpage.*/
+.webpage-title {
+  margin-top: 20px;
 }
