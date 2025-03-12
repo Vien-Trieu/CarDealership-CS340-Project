@@ -1,127 +1,129 @@
-// Import required modules
-import express from "express";
+import 'dotenv/config';
+import express, { json } from 'express';
+import { compare, hash } from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import mysql from 'mysql2';
 import cors from 'cors';
-import bcrypt from 'bcryptjs';
 
-// Create an Express app
+const { sign, verify } = jwt;
 const app = express();
-const port = 3000;  
 
-// Middleware
-app.use(express.json());  // To parse JSON requests
-app.use(cors({
-    origin: 'http://localhost:3000'  // Replace with the actual URL of your frontend
-}));
+// Middleware to enable CORS and parse JSON requests
+app.use(cors());
+app.use(json());
 
-// Set up MySQL connection
-const connection = mysql.createConnection({
-  host: 'localhost',    // MySQL server host
-  user: 'root',         // MySQL username
-  password: 'PikachuYT@112',  // MySQL password
-  database: 'car_dealership'  // The name database
-});
+// Create a MySQL connection pool (recommended for better performance)
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "PikachuYT@112", // Consider using environment variables for security
+  database: "car_dealership"
+}).promise();
 
-// Connect to the database
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:', err.stack);
-    return;
+// Test MySQL connection
+db.query('SELECT 1')
+  .then(() => {
+    console.log('Connected to the database');
+  })
+  .catch(err => {
+    console.error('Database connection error:', err);
+  });
+
+// JWT Secret and Admin Password from environment variables (use dotenv for security)
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
+const DEFAULT_ADMIN_PASSWORD = process.env.DEFAULT_ADMIN_PASSWORD || 'defaultAdminPass';
+
+// Middleware to verify JWT token
+const authenticateToken = (req, res, next) => {
+  const token = req.headers['authorization']?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ success: false, message: 'Access denied. No token provided.' });
   }
-  console.log('Connected to the database as id ' + connection.threadId);
-});
 
-// Existing routes (login, users, cars, etc.)
-
-// Route to purchase a car (update status to "purchased")
-app.post('/purchase', (req, res) => {
-  const { carId, userId } = req.body;  // The car to be purchased and the user purchasing it
-
-  // Update car's status to 'purchased' and associate it with the user
-  const query = 'UPDATE cars SET status = "purchased", user_id = ? WHERE id = ? AND status != "purchased"';
-  
-  connection.query(query, [userId, carId], (err, results) => {
+  verify(token, JWT_SECRET, (err, user) => {
     if (err) {
-      console.error(err);
-      return res.status(500).json({ message: 'Error processing purchase' });
+      return res.status(403).json({ success: false, message: 'Invalid or expired token' });
     }
-
-    if (results.affectedRows > 0) {
-      res.json({ message: 'Car purchased successfully!' });
-    } else {
-      res.status(400).json({ message: 'Car is already purchased or unavailable' });
-    }
+    req.user = user; // Attach user info to the request object
+    next();
   });
-});
+};
 
-// Route to order a car (mark as "ordered" in the database)
-app.post('/order', (req, res) => {
-  const { carId, userId } = req.body;  // The car to be ordered and the user ordering it
+// **Login endpoint**
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
 
-  // Update car's status to 'ordered' and associate it with the user
-  const query = 'UPDATE cars SET status = "ordered", user_id = ? WHERE id = ? AND status != "purchased" AND status != "ordered"';
-  
-  connection.query(query, [userId, carId], (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ message: 'Error processing order' });
-    }
+  if (!username || !password) {
+    return res.status(400).json({ success: false, message: 'Please fill in all fields' });
+  }
 
-    if (results.affectedRows > 0) {
-      res.json({ message: 'Car ordered successfully!' });
-    } else {
-      res.status(400).json({ message: 'Car is already purchased or ordered' });
-    }
-  });
-});
-
-// Routes to get specific car details by ID (for both order and purchase pages)
-app.get('/cars/:id', (req, res) => {
-  const { id } = req.params;
-
-  const query = 'SELECT * FROM cars WHERE id = ?';
-  
-  connection.query(query, [id], (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ message: 'Error fetching car details' });
-    }
-
-    if (results.length > 0) {
-      res.json(results[0]);  // Send the car details
-    } else {
-      res.status(404).json({ message: 'Car not found' });
-    }
-  });
-});
-
-app.post('/api/customers', authenticateToken, async (req, res) => {
   try {
-    const { name, email, phone, address } = req.body;
-    
-    // Insert customer into the database
-    await executeQuery(
-      'INSERT INTO customers (name, email, phone, address, user_id) VALUES (?, ?, ?, ?, ?)',
-      [name, email, phone, address, req.user.id]
+    const [users] = await db.query('SELECT * FROM users WHERE username = ?', [username]);
+
+    if (users.length === 0) {
+      return res.status(400).json({ success: false, message: 'Invalid username or password' });
+    }
+
+    const employee = users[0];
+    const isPasswordCorrect = await compare(password, employee.password);
+
+    if (!isPasswordCorrect) {
+      return res.status(400).json({ success: false, message: 'Invalid username or password' });
+    }
+
+    const token = sign(
+      { id: employee.id, username: employee.username },
+      JWT_SECRET,
+      { expiresIn: '1h' }
     );
-    
-    res.status(201).json({ message: 'Customer information recorded successfully' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+
+    res.status(200).json({ success: true, message: 'Login successful', token });
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).json({ success: false, message: 'Server error during login' });
   }
 });
 
-app.get('/api/customers', authenticateToken, async (req, res) => {
+// **Register endpoint** (for employee registration)
+app.post('/api/register', async (req, res) => {
+  const { username, password, adminPassword } = req.body;
+
+  // Check if admin password matches the default admin password
+  if (adminPassword !== DEFAULT_ADMIN_PASSWORD) {
+    return res.status(400).json({ success: false, message: 'Invalid admin password' });
+  }
+
+  if (!username || !password || !adminPassword) {
+    return res.status(400).json({ success: false, message: 'Please provide all required fields' });
+  }
+
   try {
-    const customers = await executeQuery('SELECT * FROM customers WHERE user_id = ?', [req.user.id]);
-    res.json(customers);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const hashedPassword = await hash(password, 10);
+
+    // Insert the new employee into the database
+    await db.query('INSERT INTO Employee (username, password) VALUES (?, ?)', [username, hashedPassword]);
+
+    res.status(201).json({ success: true, message: 'Employee registered successfully' });
+  } catch (err) {
+    console.error('Error during registration:', err);
+    res.status(500).json({ success: false, message: 'Server error during registration' });
   }
 });
 
+// **Get all employees** (secured route)
+app.get('/api/employees', authenticateToken, async (req, res) => {
+  try {
+    const [employees] = await db.query('SELECT id, username FROM Employee');
+    res.status(200).json({ success: true, employees });
+  } catch (err) {
+    console.error('Error fetching employees:', err);
+    res.status(500).json({ success: false, message: 'Server error fetching employees' });
+  }
+});
 
-// Start the server
+// **Start the server**
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
