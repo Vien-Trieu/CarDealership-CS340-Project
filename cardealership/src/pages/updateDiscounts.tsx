@@ -83,6 +83,8 @@ function UpdateDiscounts() {
                     <p onClick={() => navigate('/calculateBonus')}
                     style={{cursor: "pointer"}}>Calculate Bonus</p>
                     <br></br>
+                    <br></br>
+                    <br></br>
                     <p onClick={() => navigate('/addVehicle')}
                     style={{cursor: "pointer"}}>Add Vehicle to Inventory</p>
                     <br></br>
@@ -124,7 +126,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -138,7 +140,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -152,7 +154,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -166,7 +168,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -180,7 +182,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -194,7 +196,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -208,7 +210,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -222,7 +224,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
@@ -236,7 +238,7 @@ function UpdateDiscounts() {
                     <div>Price: {vehicleEntry.price}</div>
                     <div 
                     className = 'button'
-                    onClick={() => navigate('/VehicleDetails')}>
+                    onClick={() => navigate('/vehicleDiscount')}>
                         View Discount
                     </div>
                 </div>
