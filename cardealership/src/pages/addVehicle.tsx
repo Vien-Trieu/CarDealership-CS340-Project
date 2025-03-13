@@ -1,11 +1,12 @@
 /*---------------------------------------------------
 Author: Tytrez Dixon 
 Date Written: 2/15/2025
-Date Updated: 2/17/2025
+Date Updated: 3/12/2025
 
-This is the .tsx file for the "Add Vehicle" web page for 
-Mr.Tucker's Car Dealership. On this web page, the user will be
-able to add Vehicles to the dealerships inventory.
+This is the .tsx file for choosing a specific vehicle 
+inventory for the web application of Mr.Tucker's Car Dealership.
+On this page, the user will be able to select an inventory
+from "Sport", "Family", and "Recreational".
 ---------------------------------------------------*/
 
 // Import the necessary libraries and packages.
@@ -15,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import IonIcon from '@reacticons/ionicons';
 import { useState } from 'react';
 
-{/* This function creates the front-end display of the webpage */}
+// This function creates the front-end display of the webpage.
 function AddVehicle () {
 
     {/* Initialize the useNavigate method to enable the transition from one
@@ -87,6 +88,29 @@ function AddVehicle () {
                     onClick={handleClick}
                     style={{cursor: "pointer" }}> Hide Menu</i>
                 </aside>
+            </div>
+
+            {/* Display the tile of the webpage */}
+            <h1>Choose Vehicle Inventory</h1>
+
+            {/* Choose a vehicle inventory from the three types.*/}
+            <div style = {{display: 'flex', justifyItems: 'center', marginTop: "150px", flexDirection: "column"}}>
+
+                <div className = "button"
+                     style = {{width: "150px", height: "75px", marginLeft: "650px", marginBottom: "50px"}}>
+                    Sport
+                </div>
+
+                <div className = "button"
+                     style = {{width: "150px", height: "75px", marginLeft: "650px", marginBottom: "50px"}}>
+                    Family
+                </div>
+
+                <div className = "button"
+                     style = {{width: "150px", height: "75px", marginLeft: "650px", marginBottom: "50px"}}>
+                    Recreational
+                </div>
+
             </div>
         </div>
     );
