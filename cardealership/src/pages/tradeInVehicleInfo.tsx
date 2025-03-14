@@ -1,7 +1,7 @@
 /*---------------------------------------------------------
 Author: Tytrez Dixon
 Date Written: 3/2/2025
-Date Updated: __________
+Date Updated: 3/13/2025
 
 This is the .tsx file for the "Trade-In Vehicle 
 Information" page for Mr.Tucker's Car Dealership's
@@ -10,7 +10,7 @@ to enter the information regarding a vehicle a customer
 wishes to trade in. The user will then be able to calculate
 the vehicle's value and add it to the dealership's inventory.
 -------------------------------------------------------------*/
-
+ 
 // Import the necessary files and packages.
 import React from 'react';
 import '../styles/WebApp.css';
@@ -42,7 +42,8 @@ function TradeInVehicleInfo() {
             {/* Display list of fields for entering trade-in vehicle information */}
             <div className = "search"
                 style = {{display: 'flex', flexWrap: 'wrap', 
-                        gap: '35px', justifyContent: 'center', marginTop: '100px'}}>
+                        gap: '35px', justifyContent: 'center', marginTop: '100px', flexDirection: 'column',
+                        marginLeft: "575px"}}>
                 <div>
                     <label style = {{marginRight: '5px'}}>Make</label>
                     <input
