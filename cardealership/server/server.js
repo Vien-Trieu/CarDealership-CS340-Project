@@ -9,8 +9,10 @@ const { sign, verify } = jwt;
 const app = express();
 
 // Middleware to enable CORS and parse JSON requests
-app.use(cors());
-app.use(json());
+//app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',  // Frontend URL
+}));
 
 // Create a MySQL connection pool (recommended for better performance)
 const db = mysql.createPool({
