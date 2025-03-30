@@ -1,7 +1,7 @@
 /*---------------------------------------------------
 Author: Tytrez Dixon 
 Date Written: 2/15/2025
-Date Updated: 3/13/2025
+Date Updated: 3/17/2025
 
 This is the .tsx file for choosing a specific vehicle 
 inventory for the web application of Mr.Tucker's Car Dealership.
@@ -103,12 +103,14 @@ function AddVehicle () {
                 </div>
 
                 <div className = "button"
-                     style = {{width: "150px", height: "75px", marginLeft: "650px", marginBottom: "50px"}}>
+                     style = {{width: "150px", height: "75px", marginLeft: "650px", marginBottom: "50px"}}
+                     onClick={() => navigate('/addFamilyVehicle')}>
                     Family
                 </div>
 
                 <div className = "button"
-                     style = {{width: "150px", height: "75px", marginLeft: "650px", marginBottom: "50px"}}>
+                     style = {{width: "150px", height: "75px", marginLeft: "650px", marginBottom: "50px"}}
+                     onClick={() => navigate('/addRecreationalVehicle')}>
                     Recreational
                 </div>
 
