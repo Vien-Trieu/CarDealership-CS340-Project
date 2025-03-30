@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 Author: Tytrez Dixon 
 Date Written: 2/15/2025
-Date Updated: 2/23/2025
+Date Updated: 3/23/2025
 
 This is the .tsx file for the "Approve Sales and Orders" web page for 
 Mr.Tucker's Car Dealership. On this web page, the owner
@@ -30,19 +30,6 @@ function ApproveTransactions () {
     const [menuVisible, setMenuVisible] = useState (false);
 
     const handleClick = () => setMenuVisible(!menuVisible)
-
-
-    // const [transactApproved, setTransactApproved] = useState (false);
-    // const [transactNotApproved, setTransactNotApproved] = useState (false);
-
-    // const handleApproveClick = () => setTransactApproved(!transactApproved)
-    // const handleNoApproveClick = () => setTransactNotApproved(!transactNotApproved)
-    
-    // const [transactRejected, setTransactRejected] = useState (false);
-    // const [transactNotRejected, setTransactNotRejected] = useState (false);
-
-    // const handleRejectClick = () => setTransactRejected(!transactRejected)
-    // const handleNoRejectClick = () => setTransactNotRejected(!transactNotRejected)
 
     {/* This const creates a pendingSale object which consists
         of a type, vehicle name, and an image of the vehicle. */}
@@ -130,29 +117,35 @@ function ApproveTransactions () {
 
             <div>
                 <div style = {{marginTop: '46px', justifyItems: 'center'}}>
-                    <h2>The following sales/orders are awaiting approval:</h2>
+                    <h2>The following transactions are awaiting approval:</h2>
                 </div>
 
-
+            
                 {/* This block of code displays the pending sales and orders.*/}
                 <div style = {{justifyItems: 'left', marginLeft: '250px', marginTop: '30px'}}>
                     
                     {/* Display the pending orders and sales as list items.*/}
                     <h2><li>{pendingOrder.type} of {pendingOrder.vehicleName}</li></h2>
                     
-                    {/* Display the vehicle image. */}
-                    <img src = {pendingOrder.vehicleImg}
-                        width = {350}
-                        height = {300}></img>
+                    <div style = {{display: 'flex', flex: 'wrap', flexDirection: 'row'}}>
+                        {/* Display the vehicle image. */}
+                        <img src = {pendingOrder.vehicleImg}
+                            width = {350}
+                            height = {300}></img>
 
 
-                    {/* Display the "approve" and "reject" buttons. */}
-                    <div className = "approve">
-                        Approve
-                    </div>
+                        {/* Display the "approve" and "reject" buttons. */}
+                        <div className = "approve"
+                             style = {{marginTop: '100px', marginLeft: '50px', width: '200px', height: '100px'}}
+                             onClick={() => navigate('/approveTransactionQuery')}>
+                            Approve
+                        </div>
 
-                    <div className = "reject">
-                        Reject
+                        <div className = "reject"
+                             style = {{marginTop: '100px', marginLeft: '50px', width: '200px', height: '100px'}}
+                             onClick={() => navigate('/rejectTransactionQuery')}>
+                            Reject
+                        </div>
                     </div>
                 </div>
 
