@@ -1,7 +1,7 @@
 /*------------------------------------------------------
 Author: Tytrez Dixon
 Date Written: 3/13/2025
-Date Upated: __________
+Date Upated: 3/17/2025
 
 This is the .tsx file for entering vehicle information 
 about a vehicle which will be added to the Sports lot
@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import IonIcon from '@reacticons/ionicons';
 import { useState } from 'react';
 
+// This function creates the front-end display of the webpage.
 function AddSportVehicle () {
 
         {/* Initialize the useNavigate method to enable the transition from one
@@ -175,10 +176,21 @@ function AddSportVehicle () {
             {/* Return to Lot Selection */}
             <div 
             className = "logout"
-            style = {{marginTop: "750px"}}
+            style = {{marginTop: "650px"}}
             onClick={() => navigate('/addVehicle')}>
                 Return to Lot Selection
             </div>
+
+            {/* Submit Button */}
+            <div 
+            className = "logout"
+            style = {{marginTop: "750px"}}
+            onClick={() => navigate('/addSportVehicleConfirmation')}
+            >
+                Submit
+            </div>
+
+            
         </div>
         
     );
