@@ -47,12 +47,12 @@ function Home(){
     
     <div>
         <div>
-            <h1>Mr. Tuckers Car Dealership</h1>
+            <h1>Mr. Tucker's Car Dealership</h1>
         </div>
 
-        <div>
+        {/* <div>
             <h3> Find you dream car here!</h3>
-        </div>
+        </div> */}
     </div>
             
     {/* Menu List */}
@@ -90,8 +90,8 @@ function Home(){
     <nav style = {{marginTop: "20px"}}>
         <ul className="navbar">
             <li><a href="">Home</a></li>
-            <li><a href="">Order</a></li>
-            <li><a href="">Purchase</a></li>
+            <li><a onClick = {() => navigate('/order-selection')} href="">Order</a></li>
+            <li><a onClick = {() => navigate('/vehicleList')} href="">Purchase</a></li>
         </ul>
     <div className="search">
         <form>
